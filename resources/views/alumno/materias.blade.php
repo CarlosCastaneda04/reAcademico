@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
-@section('content')
-<h1>Mis Materias</h1>
-<ul>
-    @foreach ($materias as $materia)
-        <li><a href="{{ route('alumno.notas', $materia->id) }}">{{ $materia->nombre }}</a></li>
-    @endforeach
-</ul>
+@section('styles')
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/materias.css') }}" rel="stylesheet"> <!-- Asegúrate de cargar materias.css -->
 @endsection
+
+@section('content')
+<div class="container">
+    <h1>Universidad Patrimonial 2</h1>
+    <div class="materias">
+        @foreach ($materias as $materia)
+            <a href="{{ route('alumno.notas', ['id' => $materia->id]) }}" class="materia-button">{{ $materia->nombre }}</a>
+        @endforeach
+    </div>
+</div>
+@endsection
+

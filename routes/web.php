@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SuperadminController;
@@ -7,16 +9,23 @@ use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstadisticasController;
 
-
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Ruta de inicio para todos los usuarios
 Route::get('/home', function () {
-    return view('home');
+    if (Auth::check()) {
+        if (Auth::user()->rol == 'Alumno') {
+            return redirect()->route('alumno.materias');
+        } elseif (Auth::user()->rol == 'Docente') {
+            return redirect()->route('docente.materias');
+        } elseif (Auth::user()->rol == 'Superadmin') {
+            return view('home'); // Aquí podrías cargar un dashboard para Superadmin
+        }
+    }
+    return view('welcome'); // Redirige a welcome si no hay un rol definido
 })->name('home');
-
-
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -32,17 +41,14 @@ Route::middleware('auth')->group(function() {
     Route::post('/materias', [SuperadminController::class, 'asignarMaterias']);
 });
 
-
-
-//Alumno
+// Alumno
 Route::middleware('auth')->group(function() {
     Route::get('/materias/alumno', [AlumnoController::class, 'verMaterias'])->name('alumno.materias');
     Route::get('/materias/alumno/{id}', [AlumnoController::class, 'verNotas'])->name('alumno.notas');
     Route::get('/materias/alumno/{id}/descargar', [AlumnoController::class, 'descargarNotas'])->name('alumno.descargar');
 });
 
-
-//docente
+// Docente
 Route::middleware('auth')->group(function() {
     Route::get('/materias/docente', [DocenteController::class, 'verMaterias'])->name('docente.materias');
     Route::get('/materias/docente/{id}', [DocenteController::class, 'verAlumnos'])->name('docente.alumnos');

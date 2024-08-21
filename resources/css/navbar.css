@@ -1,0 +1,80 @@
+/* Estilo general para la Navbar */
+.navbar {
+    background-color: #600000; /* Color de fondo similar al de la imagen */
+    color: #ffffff; /* Texto en blanco */
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed; /* Fija la navbar en la parte superior */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0; /* Elimina los márgenes del body para que la navbar esté completamente arriba */
+    padding-top: 60px; /* Espacio para evitar que el contenido se superponga a la navbar */
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li {
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+.navbar .user-role {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1; /* Para centrar el rol del usuario */
+    text-align: center;
+}
+
+.navbar .user-profile {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.navbar .user-profile a {
+    margin-left: 10px; /* Añade un margen izquierdo al enlace de Logout */
+    color: #ffffff; /* Asegura que el texto del enlace también sea blanco */
+    text-decoration: none; /* Remueve subrayado */
+}
+
+.navbar .user-profile a:hover {
+    text-decoration: underline; /* Agrega subrayado al hacer hover */
+}
+
+.btn-logout {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.btn-logout:hover {
+    text-decoration: underline;
+}

@@ -3,16 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; // Asegúrate de importar Auth
-use Illuminate\Support\Facades\DB;   // Asegúrate de importar DB
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AlumnoController extends Controller
 {
-    public function verMaterias() {
+    public function verMaterias()
+    {
         $alumno_id = Auth::user()->id;
         $materias = DB::select('SELECT m.* FROM materias m JOIN matriculas mt ON m.id = mt.materia_id WHERE mt.alumno_id = ?', [$alumno_id]);
 
-        return view('alumno.materias', compact('materias'));
+        return view('alumno.home', compact('materias'));
     }
 
     public function verNotas($id) {

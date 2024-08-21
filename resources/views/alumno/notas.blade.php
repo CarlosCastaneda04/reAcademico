@@ -1,17 +1,52 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Notas</h1>
-@foreach ($notas as $nota)
-    <div>
-        <h2>Periodo: {{ $nota->periodo }}</h2>
-        <p>Nota 1: {{ $nota->nota1 }} ({{ $nota->porcentaje_nota1 }}%)</p>
-        <p>Nota 2: {{ $nota->nota2 }} ({{ $nota->porcentaje_nota2 }}%)</p>
-        <p>Nota 3: {{ $nota->nota3 }} ({{ $nota->porcentaje_nota3 }}%)</p>
-        <p>Nota 4: {{ $nota->nota4 }} ({{ $nota->porcentaje_nota4 }}%)</p>
-        <p>Nota 5: {{ $nota->nota5 }} ({{ $nota->porcentaje_nota5 }}%)</p>
-        <p><strong>Promedio: {{ ($nota->nota1 * $nota->porcentaje_nota1 + $nota->nota2 * $nota->porcentaje_nota2 + $nota->nota3 * $nota->porcentaje_nota3 + $nota->nota4 * $nota->porcentaje_nota4 + $nota->nota5 * $nota->porcentaje_nota5) / 100 }}</strong></p>
-        <a href="{{ route('alumno.descargar', $nota->matricula_id) }}">Descargar</a>
-    </div>
-@endforeach
+<div class="container">
+    <h1 class="text-center">Notas de {{ $notas[0]->materia_nombre }}</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Periodo</th>
+                <th>Nota 1</th>
+                <th>Nota 2</th>
+                <th>Nota 3</th>
+                <th>Nota 4</th>
+                <th>Nota 5</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($notas as $nota)
+            <tr>
+                <td>{{ $nota->periodo }}</td>
+                <td>{{ $nota->nota1 }}</td>
+                <td>{{ $nota->nota2 }}</td>
+                <td>{{ $nota->nota3 }}</td>
+                <td>{{ $nota->nota4 }}</td>
+                <td>{{ $nota->nota5 }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 @endsection
+
+@section('styles')
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table th, .table td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+@endsection
+

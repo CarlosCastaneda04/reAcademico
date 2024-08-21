@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Registro Académico</title>
-    @vite('resources/css/navbar.css')
+    @vite('resources/css/styles.css')
 </head>
 <body>
     <nav class="navbar">

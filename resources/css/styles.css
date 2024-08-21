@@ -78,3 +78,49 @@ body {
 .btn-logout:hover {
     text-decoration: underline;
 }
+
+
+
+/* materias */
+
+
+/* home */
+/* Contenedor centrado */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+/* Grid para las materias */
+.materias-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 600px;  /* Ajusta el ancho máximo para centrar */
+}
+
+/* Estilos para los botones de las materias */
+.materia-btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;  /* Ajusta el ancho máximo de los botones */
+    padding: 20px;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.materia-btn:hover {
+    background-color: #f5f5f5;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}

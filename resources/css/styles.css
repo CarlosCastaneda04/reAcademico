@@ -168,3 +168,54 @@ body {
 h1, h2 {
     color: black; /* Cambiar los textos "Notas de Programación Avanzada" y "Notas periodo 1" a negro */
 }
+
+
+/*Boton Flotante para regresar */
+.imprimir-btn {
+    background-color: #600000; /* Color similar al botón de volver */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.imprimir-btn:hover {
+    background-color: #a00000; /* Un poco más claro al hacer hover */
+}
+
+
+/* Estilo para el botón de volver */
+.volver-btn-container {
+    text-align: left;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px; /* Ajusta la distancia desde el borde izquierdo si es necesario */
+}
+
+.volver-btn {
+    background-color: #600000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.volver-btn:hover {
+    background-color: #a00000;
+}

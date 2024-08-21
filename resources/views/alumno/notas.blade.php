@@ -32,10 +32,23 @@
                         </tr>
                     </tbody>
                 </table>
+                <div style="text-align: right;">
+                    <button class="imprimir-btn" onclick="imprimirPeriodo({{ $nota->periodo }}, {{ $nota->materia_id }})">Imprimir {{ $nota->periodo }} periodo</button>
+                </div>
             @endforeach
         </div>
     @else
         <p class="text-center">No se encontraron notas para esta materia.</p>
     @endif
+    <div class="volver-btn-container">
+        <button class="volver-btn" onclick="window.history.back()">Volver</button>
+    </div>
 </div>
+
+<script>
+    function imprimirPeriodo(periodo, materiaId) {
+        const url = `/alumno/imprimir/${materiaId}/${periodo}`;
+        window.location.href = url;
+    }
+</script>
 @endsection

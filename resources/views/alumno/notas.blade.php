@@ -2,51 +2,40 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-center">Notas de {{ $notas[0]->materia_nombre }}</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Periodo</th>
-                <th>Nota 1</th>
-                <th>Nota 2</th>
-                <th>Nota 3</th>
-                <th>Nota 4</th>
-                <th>Nota 5</th>
-            </tr>
-        </thead>
-        <tbody>
+    @if(count($notas) > 0)
+        <h1 class="text-center">Notas de {{ $notas[0]->materia }}</h1>
+
+        <div class="periodo-container">
             @foreach($notas as $nota)
-            <tr>
-                <td>{{ $nota->periodo }}</td>
-                <td>{{ $nota->nota1 }}</td>
-                <td>{{ $nota->nota2 }}</td>
-                <td>{{ $nota->nota3 }}</td>
-                <td>{{ $nota->nota4 }}</td>
-                <td>{{ $nota->nota5 }}</td>
-            </tr>
+                <h2 class="text-center">Notas {{ $nota->periodo }} periodo</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Evaluación 1</th>
+                            <th>Evaluación 2</th>
+                            <th>Evaluación 3</th>
+                            <th>Evaluación 4</th>
+                            <th>Evaluación 5</th>
+                            <th>Nota Final</th>
+                            <th>Asistencia (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ $nota->{'Evaluación 1'} }}</td>
+                            <td>{{ $nota->{'Evaluación 2'} }}</td>
+                            <td>{{ $nota->{'Evaluación 3'} }}</td>
+                            <td>{{ $nota->{'Evaluación 4'} }}</td>
+                            <td>{{ $nota->{'Evaluación 5'} }}</td>
+                            <td>{{ $nota->{'Nota Final'} }}</td>
+                            <td>{{ $nota->{'Asistencia (%)'} }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             @endforeach
-        </tbody>
-    </table>
+        </div>
+    @else
+        <p class="text-center">No se encontraron notas para esta materia.</p>
+    @endif
 </div>
 @endsection
-
-@section('styles')
-    <style>
-        .container {
-            margin-top: 50px;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .table th, .table td {
-            border: 1px solid #333;
-            padding: 10px;
-            text-align: center;
-        }
-    </style>
-@endsection
-

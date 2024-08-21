@@ -11,10 +11,17 @@ class AlumnoController extends Controller
     public function verMaterias()
     {
         $alumno_id = Auth::user()->id;
-        $materias = DB::select('SELECT m.* FROM materias m JOIN matriculas mt ON m.id = mt.materia_id WHERE mt.alumno_id = ?', [$alumno_id]);
-
+    
+        $materias = DB::select('
+            SELECT m.id, m.nombre AS materia
+            FROM materias m
+            INNER JOIN matriculas ma ON m.id = ma.materia_id
+            INNER JOIN usuarios u ON u.id = ma.alumno_id
+            WHERE u.id = ? AND ma.estado = ?', [$alumno_id, 'Activo']);
+    
         return view('alumno.home', compact('materias'));
     }
+    
 
     public function verNotas($id) {
         $alumno_id = Auth::user()->id;

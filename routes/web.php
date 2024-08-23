@@ -92,6 +92,14 @@ Route::get('/materias/alumno', [AlumnoController::class, 'verMaterias'])->name('
 Route::get('/materias/alumno/{id}', [AlumnoController::class, 'verNotas'])->name('alumno.notas');
 Route::get('/alumno/imprimir/{materia_id}/{periodo}', [AlumnoController::class, 'imprimirNotasPeriodo'])->name('alumno.imprimir');
 
+// web.php
+
+// Ruta para mostrar el formulario de agregar notas
+Route::get('/docente/{id}/alumno/{alumno_id}/agregar-notas', [DocenteController::class, 'mostrarFormularioAgregarNotas'])->name('docente.agregar.notas');
+
+// Ruta para guardar las notas
+Route::post('/docente/{id}/alumno/{alumno_id}/guardar-notas', [DocenteController::class, 'guardarNotasd'])->name('docente.guardar.notas');
+Route::post('/docente/{id}/alumno/{alumno_id}/guardar-notas/{periodo}', [DocenteController::class, 'guardarNotasd'])->name('docente.guardar.notas');
 
     // Ruta para estadísticas
     Route::get('/estadisticas', [EstadisticasController::class, 'index'])->name('estadisticas');

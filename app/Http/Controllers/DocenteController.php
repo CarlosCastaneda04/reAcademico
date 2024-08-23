@@ -171,6 +171,101 @@ class DocenteController extends Controller
     return redirect()->route('docente.alumnos', ['id' => $materia_id])->with('success', 'Notas y porcentajes actualizados correctamente');
 }
 
+ // Mostrar el formulario para agregar notas
+    public function mostrarFormularioAgregarNotas($id, $alumno_id)
+    {
+        $matricula = DB::select('SELECT * FROM matriculas WHERE alumno_id = ? AND materia_id = ?', [$alumno_id, $id]);
+
+        if (empty($matricula)) {
+            return redirect()->back()->with('error', 'Matrícula no encontrada.');
+        }
+
+        $matricula_id = $matricula[0]->id;
+
+        $notas = DB::select('SELECT * FROM notas WHERE matricula_id = ?', [$matricula_id]);
+
+        return view('profesor.agregarNotas', compact('id', 'alumno_id', 'notas', 'matricula_id'));
+    }
+
+   
+    
+public function guardarNotasd(Request $request, $id, $alumno_id, $periodo)
+{
+    $matricula_id = $request->input('matricula_id');
+
+    // Verificar si ya existe un registro de notas para el periodo y la matrícula
+    $existingNotas = DB::select('SELECT * FROM notas WHERE matricula_id = ? AND periodo = ?', [$matricula_id, $periodo]);
+
+    if ($existingNotas) {
+        // Actualizar las notas existentes
+        DB::update('UPDATE notas SET 
+            nota1 = ?, 
+            nota2 = ?, 
+            nota3 = ?, 
+            nota4 = ?, 
+            nota5 = ?, 
+            porcentaje_nota1 = ?, 
+            porcentaje_nota2 = ?, 
+            porcentaje_nota3 = ?, 
+            porcentaje_nota4 = ?, 
+            porcentaje_nota5 = ? 
+            WHERE matricula_id = ? AND periodo = ?', [
+            $request->input("nota1") ?? null,
+            $request->input("nota2") ?? null,
+            $request->input("nota3") ?? null,
+            $request->input("nota4") ?? null,
+            $request->input("nota5") ?? null,
+            $request->input("porcentaje_nota1") ?? 0,
+            $request->input("porcentaje_nota2") ?? 0,
+            $request->input("porcentaje_nota3") ?? 0,
+            $request->input("porcentaje_nota4") ?? 0,
+            $request->input("porcentaje_nota5") ?? 0,
+            $matricula_id,
+            $periodo
+        ]);
+    } else {
+        // Insertar nuevas notas si no existen
+        DB::insert('INSERT INTO notas (matricula_id, periodo, nota1, nota2, nota3, nota4, nota5, porcentaje_nota1, porcentaje_nota2, porcentaje_nota3, porcentaje_nota4, porcentaje_nota5)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            $matricula_id,
+            $periodo,
+            $request->input("nota1") ?? null,
+            $request->input("nota2") ?? null,
+            $request->input("nota3") ?? null,
+            $request->input("nota4") ?? null,
+            $request->input("nota5") ?? null,
+            $request->input("porcentaje_nota1") ?? 0,
+            $request->input("porcentaje_nota2") ?? 0,
+            $request->input("porcentaje_nota3") ?? 0,
+            $request->input("porcentaje_nota4") ?? 0,
+            $request->input("porcentaje_nota5") ?? 0,
+        ]);
+    }
+
+    // Verificar si ya existe un registro de asistencia para la matrícula
+    $existingAsistencia = DB::select('SELECT * FROM asistencias WHERE matricula_id = ?', [$matricula_id]);
+
+    if ($request->has('asistencia')) {
+        if ($existingAsistencia) {
+            // Actualizar la asistencia existente
+            DB::update('UPDATE asistencias SET asistencia_porcentaje = ? WHERE matricula_id = ?', [
+                $request->input('asistencia'),
+                $matricula_id,
+            ]);
+        } else {
+            // Insertar nueva asistencia si no existe
+            DB::insert('INSERT INTO asistencias (matricula_id, asistencia_porcentaje) VALUES (?, ?)', [
+                $matricula_id,
+                $request->input('asistencia'),
+            ]);
+        }
+    }
+
+    return redirect()->route('docente.materias')->with('success', 'Notas y asistencia del periodo guardadas exitosamente.');
+}
+
+
+
 
 
 }

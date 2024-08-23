@@ -1,13 +1,13 @@
 /* Estilo general para la Navbar */
 .navbar {
-    background-color: #600000; /* Color de fondo similar al de la imagen */
-    color: #ffffff; /* Texto en blanco */
+    background-color: #600000;
+    color: #ffffff;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    position: fixed; /* Fija la navbar en la parte superior */
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -15,8 +15,8 @@
 }
 
 body {
-    margin: 0; /* Elimina los márgenes del body para que la navbar esté completamente arriba */
-    padding-top: 60px; /* Espacio para evitar que el contenido se superponga a la navbar */
+    margin: 0;
+    padding-top: 60px;
 }
 
 .navbar ul {
@@ -45,8 +45,7 @@ body {
     font-size: 18px;
     font-weight: bold;
     text-align: center;
-    flex-grow: 1; /* Para centrar el rol del usuario */
-    text-align: center;
+    flex-grow: 1;
 }
 
 .navbar .user-profile {
@@ -54,16 +53,14 @@ body {
     align-items: center;
 }
 
-
-
 .navbar .user-profile a {
-    margin-left: 10px; /* Añade un margen izquierdo al enlace de Logout */
-    color: #ffffff; /* Asegura que el texto del enlace también sea blanco */
-    text-decoration: none; /* Remueve subrayado */
+    margin-left: 10px;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .navbar .user-profile a:hover {
-    text-decoration: underline; /* Agrega subrayado al hacer hover */
+    text-decoration: underline;
 }
 
 .btn-logout {
@@ -79,12 +76,6 @@ body {
     text-decoration: underline;
 }
 
-
-
-/* materias */
-
-
-/* home Alumno*/
 /* Contenedor centrado */
 .container {
     display: flex;
@@ -92,6 +83,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 80vh;
+    margin-top: 50px;
 }
 
 /* Grid para las materias */
@@ -100,14 +92,14 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    max-width: 600px;  /* Ajusta el ancho máximo para centrar */
+    max-width: 600px;
 }
 
 /* Estilos para los botones de las materias */
 .materia-btn {
     display: block;
     width: 100%;
-    max-width: 300px;  /* Ajusta el ancho máximo de los botones */
+    max-width: 300px;
     padding: 20px;
     background-color: #ffffff;
     border: 2px solid #ccc;
@@ -125,83 +117,56 @@ body {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Ver notas */ 
-.container {
-    margin-top: 50px;
-}
-
-.periodo-container {
-    margin-bottom: 30px;
-}
-
+/* Tabla de alumnos y ver notas */
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background-color: #f3e6f5; /* Cambiar este color si lo deseas */
+    background-color: #f3e6f5;
     border-radius: 10px;
     overflow: hidden;
 }
 
 .table th, .table td {
-    border: 1px solid #600000; /* Color del borde similar al navbar */
+    border: 1px solid #600000;
     padding: 15px;
     text-align: center;
 }
 
 .table th {
-    background-color: #600000; /* Color del encabezado de la tabla */
+    background-color: #600000;
     color: white;
 }
 
 .table td {
-    background-color: #cc9b9b; /* Un tono más claro que el encabezado */
+    background-color: #cc9b9b;
     color: black;
 }
 
-.text-center {
-    font-weight: bold;
-    color: black; /* Cambiar el color del texto fuera de la tabla a negro */
+/* Alternar color de fondo para filas */
+.table tbody tr:nth-child(even) td {
+    background-color: #f9f9f9;
 }
 
-h1, h2 {
-    color: black; /* Cambiar los textos "Notas de Programación Avanzada" y "Notas periodo 1" a negro */
-}
-
-
-/*Boton Flotante para regresar */
-.imprimir-btn {
-    background-color: #600000; /* Color similar al botón de volver */
-    color: white;
+/* Botones dentro de la tabla */
+.table .btn-primary {
+    padding: 8px 16px;
+    background-color: #600000;
+    color: #ffffff;
     border: none;
-    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 10px 2px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'Arial', sans-serif;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.imprimir-btn:hover {
-    background-color: #a00000; /* Un poco más claro al hacer hover */
+.table .btn-primary:hover {
+    background-color: #450000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Estilo para el botón de volver */
-.volver-btn-container {
-    text-align: left;
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 10px; /* Ajusta la distancia desde el borde izquierdo si es necesario */
-}
-
-.volver-btn {
+/* Botón flotante para regresar e imprimir */
+.imprimir-btn, .volver-btn {
     background-color: #600000;
     color: white;
     border: none;
@@ -216,6 +181,110 @@ h1, h2 {
     transition: background-color 0.3s ease;
 }
 
-.volver-btn:hover {
+.imprimir-btn:hover, .volver-btn:hover {
     background-color: #a00000;
+}
+
+/* Login */
+.login-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.login-header {
+    text-align: center;
+    color: white;
+    background-color: #800000;
+    padding: 20px;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.login-form {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form div {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: flex;
+    align-items: center;
+    color: #555;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
+}
+
+.login-form input:focus {
+    border-color: #800000;
+    outline: none;
+}
+
+.login-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-button-container button {
+    background-color: #800000;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-button-container button:hover {
+    background-color: #20e706;
+    transform: translateY(-2px);
+}
+
+.login-button-container button:active {
+    background-color: #600000;
+    transform: translateY(0);
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+    font-size: 0.9em;
+}
+
+.login-footer a {
+    color: #800000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
 }

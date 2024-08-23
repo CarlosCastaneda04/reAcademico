@@ -2,51 +2,53 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-center">Notas de {{ $notas[0]->materia_nombre }}</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Periodo</th>
-                <th>Nota 1</th>
-                <th>Nota 2</th>
-                <th>Nota 3</th>
-                <th>Nota 4</th>
-                <th>Nota 5</th>
-            </tr>
-        </thead>
-        <tbody>
+    @if(count($notas) > 0)
+        <h1 class="text-center">Notas de {{ $notas[0]->materia }}</h1>
+
+        <div class="periodo-container">
             @foreach($notas as $nota)
-            <tr>
-                <td>{{ $nota->periodo }}</td>
-                <td>{{ $nota->nota1 }}</td>
-                <td>{{ $nota->nota2 }}</td>
-                <td>{{ $nota->nota3 }}</td>
-                <td>{{ $nota->nota4 }}</td>
-                <td>{{ $nota->nota5 }}</td>
-            </tr>
+                <h2 class="text-center">Notas {{ $nota->periodo }} periodo</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Evaluación 1 <br>{{ $nota->{'P1'} }}(%)</th>
+                            <th>Evaluación 2 <br>{{ $nota->{'P2'} }}(%)</th>
+                            <th>Evaluación 3 <br>{{ $nota->{'P3'} }}(%)</th>
+                            <th>Evaluación 4 <br>{{ $nota->{'P4'} }}(%)</th>
+                            <th>Evaluación 5 <br>{{ $nota->{'P5'} }}(%)</th>
+                            <th>Nota Final <br>100(%)</th>
+                            <th>Asistencia (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ $nota->{'Evaluación 1'} }}</td>
+                            <td>{{ $nota->{'Evaluación 2'} }}</td>
+                            <td>{{ $nota->{'Evaluación 3'} }}</td>
+                            <td>{{ $nota->{'Evaluación 4'} }}</td>
+                            <td>{{ $nota->{'Evaluación 5'} }}</td>
+                            <td>{{ $nota->{'Nota Final'} }}</td>
+                            <td>{{ $nota->{'Asistencia (%)'} }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="text-align: right;">
+                    <button class="imprimir-btn" onclick="imprimirPeriodo({{ $nota->periodo }}, {{ $nota->materia_id }})">Imprimir {{ $nota->periodo }} periodo</button>
+                </div>
             @endforeach
-        </tbody>
-    </table>
+        </div>
+    @else
+        <p class="text-center">No se encontraron notas para esta materia.</p>
+    @endif
+    <div class="volver-btn-container">
+        <button class="volver-btn" onclick="window.history.back()">Volver</button>
+    </div>
 </div>
+
+<script>
+    function imprimirPeriodo(periodo, materiaId) {
+        const url = `/alumno/imprimir/${materiaId}/${periodo}`;
+        window.location.href = url;
+    }
+</script>
 @endsection
-
-@section('styles')
-    <style>
-        .container {
-            margin-top: 50px;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .table th, .table td {
-            border: 1px solid #333;
-            padding: 10px;
-            text-align: center;
-        }
-    </style>
-@endsection
-

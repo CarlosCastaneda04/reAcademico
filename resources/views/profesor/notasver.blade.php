@@ -31,6 +31,8 @@
                 </tbody>
             </table>
         @endforeach
-
+        <div class="volver-btn-container">
+            <button class="volver-btn" onclick="window.history.back()">Volver</button>
+        </div>
     </div>
 @endsection

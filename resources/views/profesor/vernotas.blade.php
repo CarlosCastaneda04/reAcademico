@@ -15,6 +15,7 @@
                         <th>Evaluación 5 <br>{{ $nota->{'P1'} }}(%)</th>
                         <th>Nota Final <br>100(%)</th>
                         <th>Asistencia (%)</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,10 +28,14 @@
                         <td>{{ $nota->{"Evaluación 5"} }}</td>
                         <td>{{ $nota->{"Nota Final"} }}</td>
                         <td>{{ $nota->{"Asistencia (%)"} }}</td>
+                        <td>
+                            
+                            <button class="btn btn-secondary">Editar</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         @endforeach
-
     </div>
 @endsection
+

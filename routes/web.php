@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/materias/docente', [DocenteController::class, 'verMaterias'])->name('docente.materias');
     Route::get('/materias/docente/{id}', [DocenteController::class, 'verAlumnos'])->name('docente.alumnos');
     Route::post('/materias/docente/{id}', [DocenteController::class, 'guardarNotas'])->name('docente.notas.guardar');
+    
 });
 
 // Ruta para estadísticas

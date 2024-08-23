@@ -6,8 +6,9 @@
 
     @if (Auth::user()->rol == 'Superadmin')
         <p>Eres un Superadmin. Tienes acceso a la administración del sistema.</p>
-        <a href="{{ route('register') }}">Registrar nuevo usuario</a>
-        <a href="{{ route('materias') }}">Administrar materias</a>
+        <a href="{{ route('registro.index') }}">Registrar nuevo usuario</a>
+        <a href="{{ route('superadmin.materias.index') }}">Administrar materias</a>
+        <a href="{{ route('superadmin.docentes') }}">Ver docentes</a>
     @elseif (Auth::user()->rol == 'Docente')
         <p>Eres un Docente. Puedes gestionar tus materias y estudiantes.</p>
         <a href="{{ route('docente.materias') }}">Ver mis materias</a>

@@ -44,5 +44,12 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
         ];
+
     }
+
+    public function facultad()
+{
+    return $this->belongsTo(Facultad::class, 'facultad_id');
+}
+
 }

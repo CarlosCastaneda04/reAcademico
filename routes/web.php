@@ -8,11 +8,14 @@ use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstadisticasController;
+use App\Http\Controllers\RegistroController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/registrow', function() {
+    return view('registro.index');
+})->name('registro.index');
 // Ruta de inicio para todos los usuarios
 Route::get('/home', function () {
     if (Auth::check()) {
@@ -39,6 +42,32 @@ Route::middleware('auth')->group(function() {
 Route::middleware('auth')->group(function() {
     Route::get('/materias', [SuperadminController::class, 'showMateriasForm'])->name('materias');
     Route::post('/materias', [SuperadminController::class, 'asignarMaterias']);
+    Route::post('/superadmin/materias/{id}/agregar-alumnos', [SuperAdminController::class, 'agregarAlumnos'])->name('superadmin.materias.agregarAlumnos');
+    // Rutas para Superadmin sin protección por middleware
+Route::get('/superadmin/materias/alumnos', [SuperAdminController::class, 'getAlumnosPorCarrera'])->name('superadmin.materias.alumnos');
+    Route::get('/superadmin/materias/creati', [SuperAdminController::class, 'crearMateriaForm'])->name('crear');
+    Route::get('/superadmin/docentes', [SuperAdminController::class, 'verDocentes'])->name('superadmin.docentes');
+    Route::get('/superadmin/docentes/{docente_id}/materias', [SuperAdminController::class, 'verMateriasPorDocente'])->name('superadmin.docentes.materias');
+    Route::get('/superadmin/materias/create', [SuperAdminController::class, 'crearMateriaForm'])->name('superadmin.materias.create');
+    Route::post('/superadmin/materias/store', [SuperAdminController::class, 'crearMateria'])->name('superadmin.materias.store');
+    Route::get('/superadmin/materias', [SuperAdminController::class, 'verMaterias'])->name('superadmin.materias.index');
+    Route::get('/superadmin/materias/{materia_id}', [SuperAdminController::class, 'verMateriaDetalle'])->name('superadmin.materias.detalle');
+    Route::post('/superadmin/materias/{materia_id}/{alumno_id}/actualizar', [SuperAdminController::class, 'actualizarEstadoMatricula'])->name('superadmin.materias.actualizarEstado');
+    Route::get('/superadmin/docentes', [SuperAdminController::class, 'verDocentes'])->name('superadmin.docentes');
+    Route::get('/superadmin/materias/create', [SuperAdminController::class, 'crearMateriaForm'])->name('superadmin.materias.create');
+    Route::post('/superadmin/materias', [SuperAdminController::class, 'crearMateria'])->name('superadmin.materias.store');
+    Route::get('/superadmin/alumnos/baja', [SuperAdminController::class, 'darBajaAlumnoForm'])->name('superadmin.alumnos.baja');
+    Route::post('/superadmin/alumnos/baja', [SuperAdminController::class, 'darBajaAlumno'])->name('superadmin.alumnos.baja.store');
+    // Rutas para los formularios de registro
+Route::get('/registro/alumno', [RegistroController::class, 'mostrarFormularioAlumno'])->name('formulario.alumno');
+Route::get('/registro/docente', [RegistroController::class, 'mostrarFormularioDocente'])->name('formulario.docente');
+Route::get('/registro/superadmin', [RegistroController::class, 'mostrarFormularioSuperadmin'])->name('formulario.superadmin');
+
+
+// Rutas para procesar los formularios de registro
+Route::post('/registro/alumno', [RegistroController::class, 'registrarAlumno'])->name('registro.alumno');
+Route::post('/registro/docente', [RegistroController::class, 'registrarDocente'])->name('registro.docente');
+Route::post('/registro/superadmin', [RegistroController::class, 'registrarSuperadmin'])->name('registro.superadmin');
 });
 
 // Alumno
@@ -59,3 +88,5 @@ Route::middleware('auth')->group(function() {
 Route::middleware('auth')->group(function () {
     Route::get('/estadisticas', [EstadisticasController::class, 'index'])->name('estadisticas');
 });
+
+

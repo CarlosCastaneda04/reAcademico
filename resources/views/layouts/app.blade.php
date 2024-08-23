@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Registro Académico</title>
     @vite('resources/css/styles.css')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
+
 <body>
     <nav class="navbar">
         <ul>
@@ -13,9 +17,9 @@
 
             @if (Auth::check())
                 @if (Auth::user()->rol == 'Superadmin')
-                    <li><a href="{{ route('register') }}">Registrar Usuario</a></li>
-                    <li><a href="{{ route('materias') }}">Ver Materias</a></li>
-                    <li><a href="{{ route('estadisticas') }}">Estadísticas</a></li>
+                    <li><a href="{{ route('registro.index') }}">Registrar Usuario</a></li>
+                    <li><a href="{{ route('superadmin.materias.store') }}">Ver Materias</a></li>
+                    <li><a href="{{ route('crear') }}">Crear Materia</a></li>
                 @elseif (Auth::user()->rol == 'Docente')
                     <li><a href="{{ route('docente.materias') }}">Mis Materias</a></li>
                     <li><a href="{{ route('estadisticas') }}">Estadísticas</a></li>
@@ -52,4 +56,5 @@
         @yield('content')
     </div>
 </body>
+
 </html>

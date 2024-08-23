@@ -99,5 +99,36 @@ class AlumnoController extends Controller
     
         return $pdf->download('notas_periodo_'.$periodo.'.pdf');
     }
+
+    public function verHistorial($materia_id) {
+    $alumno_id = Auth::user()->id;
+
+    $historial = DB::select('
+        SELECT 
+            hn.periodo,
+            hn.nota1 AS "Evaluación 1",
+            hn.nota2 AS "Evaluación 2",
+            hn.nota3 AS "Evaluación 3",
+            hn.nota4 AS "Evaluación 4",
+            hn.nota5 AS "Evaluación 5",
+            hn.porcentaje_nota1 AS "P1",
+            hn.porcentaje_nota2 AS "P2",
+            hn.porcentaje_nota3 AS "P3",
+            hn.porcentaje_nota4 AS "P4",
+            hn.porcentaje_nota5 AS "P5",
+            hn.fecha_modificacion AS "Fecha de Modificación"
+        FROM 
+            historial_notas hn
+        INNER JOIN 
+            matriculas ma ON hn.matricula_id = ma.id
+        INNER JOIN 
+            materias m ON ma.materia_id = m.id
+        INNER JOIN 
+            usuarios u ON ma.alumno_id = u.id
+        WHERE 
+            u.id = ? AND m.id = ?', [$alumno_id, $materia_id]);
+
+    return view('alumno.historial', compact('historial'));
+}
     
 }

@@ -3,21 +3,21 @@
 @section('content')
     <div class="container">
         <h1 class="text-center">Notas del Alumno</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Periodo</th>
-                    <th>Evaluación 1</th>
-                    <th>Evaluación 2</th>
-                    <th>Evaluación 3</th>
-                    <th>Evaluación 4</th>
-                    <th>Evaluación 5</th>
-                    <th>Nota Final</th>
-                    <th>Asistencia (%)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($notas as $nota)
+        @foreach ($notas as $nota)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Periodo</th>
+                        <th>Evaluación 1 <br>{{ $nota->{'P1'} }}(%)</th>
+                        <th>Evaluación 2 <br>{{ $nota->{'P1'} }}(%)</th>
+                        <th>Evaluación 3 <br>{{ $nota->{'P1'} }}(%)</th>
+                        <th>Evaluación 4 <br>{{ $nota->{'P1'} }}(%)</th>
+                        <th>Evaluación 5 <br>{{ $nota->{'P1'} }}(%)</th>
+                        <th>Nota Final <br>100(%)</th>
+                        <th>Asistencia (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr>
                         <td>{{ $nota->periodo }}</td>
                         <td>{{ $nota->{"Evaluación 1"} }}</td>
@@ -28,8 +28,9 @@
                         <td>{{ $nota->{"Nota Final"} }}</td>
                         <td>{{ $nota->{"Asistencia (%)"} }}</td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        @endforeach
+
     </div>
 @endsection

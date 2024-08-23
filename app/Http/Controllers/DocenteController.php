@@ -54,8 +54,10 @@ class DocenteController extends Controller
                 u.id = ? AND m.id = ?', [$alumno_id, $materia_id]);
 
         if (empty($notas)) {
-            return view('profesor.no_notas'); // Muestra un mensaje si no hay notas
-        }
+    return view('profesor.no_notas', ['id' => $materia_id]); // o ['id' => $id] según tu variable
+}
+
+        
     
         return view('profesor.vernotas', compact('notas'));
     }

@@ -265,6 +265,72 @@ public function guardarNotasd(Request $request, $id, $alumno_id, $periodo)
 }
 
 
+public function guardarNotasPorPeriodo(Request $request, $materia_id, $alumno_id)
+{
+    $periodo = $request->input('periodo');
+    $matricula_id = DB::table('matriculas')
+                      ->where('alumno_id', $alumno_id)
+                      ->where('materia_id', $materia_id)
+                      ->value('id');
+
+    if (!$matricula_id) {
+        return redirect()->back()->with('error', 'Matrícula no encontrada.');
+    }
+
+    // Verificar si ya existe un registro de notas para el periodo y la matrícula
+    $existingNotas = DB::table('notas')
+                        ->where('matricula_id', $matricula_id)
+                        ->where('periodo', $periodo)
+                        ->first();
+
+    $data = [
+        'nota1' => $request->input('nota1') ?? null,
+        'nota2' => $request->input('nota2') ?? null,
+        'nota3' => $request->input('nota3') ?? null,
+        'nota4' => $request->input('nota4') ?? null,
+        'nota5' => $request->input('nota5') ?? null,
+        'porcentaje_nota1' => $request->input('porcentaje_nota1') ?? 0,
+        'porcentaje_nota2' => $request->input('porcentaje_nota2') ?? 0,
+        'porcentaje_nota3' => $request->input('porcentaje_nota3') ?? 0,
+        'porcentaje_nota4' => $request->input('porcentaje_nota4') ?? 0,
+        'porcentaje_nota5' => $request->input('porcentaje_nota5') ?? 0,
+    ];
+
+    if ($existingNotas) {
+        // Actualizar las notas existentes
+        DB::table('notas')
+            ->where('matricula_id', $matricula_id)
+            ->where('periodo', $periodo)
+            ->update($data);
+    } else {
+        // Insertar nuevas notas si no existen
+        $data['matricula_id'] = $matricula_id;
+        $data['periodo'] = $periodo;
+        DB::table('notas')->insert($data);
+    }
+
+    // Verificar si ya existe un registro de asistencia para la matrícula
+    $existingAsistencia = DB::table('asistencias')
+                            ->where('matricula_id', $matricula_id)
+                            ->first();
+
+    if ($request->has('asistencia')) {
+        if ($existingAsistencia) {
+            // Actualizar la asistencia existente
+            DB::table('asistencias')
+                ->where('matricula_id', $matricula_id)
+                ->update(['asistencia_porcentaje' => $request->input('asistencia')]);
+        } else {
+            // Insertar nueva asistencia si no existe
+            DB::table('asistencias')->insert([
+                'matricula_id' => $matricula_id,
+                'asistencia_porcentaje' => $request->input('asistencia')
+            ]);
+        }
+    }
+
+    return redirect()->back()->with('success', 'Notas y asistencia del periodo guardadas exitosamente.');
+}
 
 
 

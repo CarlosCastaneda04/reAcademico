@@ -98,6 +98,7 @@ Route::get('/materias/alumno/{id}/historial', [AlumnoController::class, 'verHist
 
 // Ruta para mostrar el formulario de agregar notas
 Route::get('/docente/{id}/alumno/{alumno_id}/agregar-notas', [DocenteController::class, 'mostrarFormularioAgregarNotas'])->name('docente.agregar.notas');
+Route::post('/materias/docente/{id}/notas/{alumno_id}/guardar-periodo', [DocenteController::class, 'guardarNotasPorPeriodo'])->name('docente.notas.guardar.periodo');
 
 // Ruta para guardar las notas
 Route::post('/docente/{id}/alumno/{alumno_id}/guardar-notas', [DocenteController::class, 'guardarNotasd'])->name('docente.guardar.notas');

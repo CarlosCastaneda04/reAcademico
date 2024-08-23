@@ -3,11 +3,10 @@
 @section('content')
     <div class="container">
         <h1 class="text-center">Notas del Alumno</h1>
-        @foreach ($notas as $nota)
-            <form action="{{ route('docente.notas.guardar', ['id' => $materia_id, 'alumno_id' => $alumno_id]) }}"
-                method="POST">
-                @csrf
-                <table class="table table-sm">
+        <form action="{{ route('docente.notas.guardar', ['id' => $materia_id, 'alumno_id' => $alumno_id]) }}" method="POST">
+            @csrf
+            @foreach ($notas as $nota)
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Periodo</th>
@@ -23,41 +22,53 @@
                     <tbody>
                         <tr>
                             <td>{{ $nota->periodo }}</td>
-                            <td><input type="text" name="nota1[{{ $nota->periodo }}]" value="{{ $nota->{"Evaluación 1"} }}"
-                                    class="form-control form-control-sm"></td>
+                            <td><input type="text" name="nota1[{{ $nota->periodo }}]" value="{{ $nota->{"Evaluación 1"} }}">
+                            </td>
                             <td><input type="text" name="nota2[{{ $nota->periodo }}]"
-                                    value="{{ $nota->{"Evaluación 2"} }}" class="form-control form-control-sm"></td>
+                                    value="{{ $nota->{"Evaluación 2"} }}"></td>
                             <td><input type="text" name="nota3[{{ $nota->periodo }}]"
-                                    value="{{ $nota->{"Evaluación 3"} }}" class="form-control form-control-sm"></td>
+                                    value="{{ $nota->{"Evaluación 3"} }}"></td>
                             <td><input type="text" name="nota4[{{ $nota->periodo }}]"
-                                    value="{{ $nota->{"Evaluación 4"} }}" class="form-control form-control-sm"></td>
+                                    value="{{ $nota->{"Evaluación 4"} }}"></td>
                             <td><input type="text" name="nota5[{{ $nota->periodo }}]"
-                                    value="{{ $nota->{"Evaluación 5"} }}" class="form-control form-control-sm"></td>
+                                    value="{{ $nota->{"Evaluación 5"} }}"></td>
                             <td>{{ $nota->{"Nota Final"} }}</td>
                             <td><input type="text" name="asistencia[{{ $nota->periodo }}]"
-                                    value="{{ $nota->{"Asistencia (%)"} }}" class="form-control form-control-sm"></td>
+                                    value="{{ $nota->{"Asistencia (%)"} }}"></td>
                         </tr>
                         <tr>
                             <td>Porcentaje</td>
-                            <td><input type="text" name="porcentaje_nota1" value="{{ $nota->{'P1'} }}"
-                                    class="form-control form-control-sm"></td>
-                            <td><input type="text" name="porcentaje_nota2" value="{{ $nota->{'P2'} }}"
-                                    class="form-control form-control-sm"></td>
-                            <td><input type="text" name="porcentaje_nota3" value="{{ $nota->{'P3'} }}"
-                                    class="form-control form-control-sm"></td>
-                            <td><input type="text" name="porcentaje_nota4" value="{{ $nota->{'P4'} }}"
-                                    class="form-control form-control-sm"></td>
-                            <td><input type="text" name="porcentaje_nota5" value="{{ $nota->{'P5'} }}"
-                                    class="form-control form-control-sm"></td>
+                            <td><input type="text" name="porcentaje_nota1" value="{{ $nota->{"P1"} }}"></td>
+                            <td><input type="text" name="porcentaje_nota2" value="{{ $nota->{"P2"} }}"></td>
+                            <td><input type="text" name="porcentaje_nota3" value="{{ $nota->{"P3"} }}"></td>
+                            <td><input type="text" name="porcentaje_nota4" value="{{ $nota->{"P4"} }}"></td>
+                            <td><input type="text" name="porcentaje_nota5" value="{{ $nota->{"P5"} }}"></td>
                             <td></td>
                             <td></td>
                         </tr>
+                        <tr>
+                            <td colspan="8">
+                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <div class="volver-btn-container">
-                    <button type="submit" class="imprimir-btn">Guardar Cambios de Periodo {{ $nota->periodo }}</button>
-                </div>
-            </form>
-        @endforeach
+            @endforeach
+        </form>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', function() {
+                const value = parseFloat(this.value);
+
+                if (isNaN(value) || value < 0) {
+                    this.value = '';
+                    alert('Por favor, ingresa un número positivo.');
+                }
+            });
+        });
+    </script>
 @endsection

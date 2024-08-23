@@ -9,6 +9,7 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -18,6 +19,9 @@
                         <td>{{ $alumno->id }}</td>
                         <td>{{ $alumno->nombre }}</td>
                         <td>{{ $alumno->email }}</td>
+                        <td>
+                            {{ $alumno->estado == 'Activo' ? 'Activo' : 'Inactivo' }}
+                        </td>
                         <td>
                             <a href="{{ route('docente.ver.notas', ['id' => $id, 'alumno_id' => $alumno->id]) }}"
                                 class="btn btn-primary">Ver Notas</a>

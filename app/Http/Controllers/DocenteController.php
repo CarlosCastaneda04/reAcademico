@@ -16,10 +16,16 @@ class DocenteController extends Controller
     }
 
     public function verAlumnos($id) {
-    $alumnos = DB::select('SELECT u.* FROM usuarios u JOIN matriculas mt ON u.id = mt.alumno_id WHERE mt.materia_id = ?', [$id]);
-
-    return view('profesor.docalumnos', compact('alumnos', 'id'));
-}
+        $alumnos = DB::select('
+            SELECT u.id, u.nombre, u.email, mt.estado
+            FROM usuarios u
+            JOIN matriculas mt ON u.id = mt.alumno_id
+            WHERE mt.materia_id = ?
+        ', [$id]);
+    
+        return view('profesor.docalumnos', compact('alumnos', 'id'));
+    }
+    
 
 
     public function verNotasAlumno($materia_id, $alumno_id) {
@@ -71,4 +77,7 @@ class DocenteController extends Controller
 
         return redirect()->route('docente.alumnos', ['id' => $id]);
     }
+
+
+
 }

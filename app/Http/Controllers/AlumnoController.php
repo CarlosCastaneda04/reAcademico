@@ -37,6 +37,11 @@ class AlumnoController extends Controller
                 n.nota3 AS "Evaluación 3",
                 n.nota4 AS "Evaluación 4",
                 n.nota5 AS "Evaluación 5",
+                n.porcentaje_nota1 AS "P1",
+                n.porcentaje_nota2 AS "P2",
+                n.porcentaje_nota3 AS "P3",
+                n.porcentaje_nota4 AS "P4",
+                n.porcentaje_nota5 AS "P5",
                 ROUND((
                     (n.nota1 * n.porcentaje_nota1 / 100) + 
                     (n.nota2 * n.porcentaje_nota2 / 100) + 
@@ -70,6 +75,11 @@ class AlumnoController extends Controller
             n.nota1 AS "Evaluación 1", n.nota2 AS "Evaluación 2", 
             n.nota3 AS "Evaluación 3", n.nota4 AS "Evaluación 4", 
             n.nota5 AS "Evaluación 5", 
+            n.porcentaje_nota1 AS "P1",
+                n.porcentaje_nota2 AS "P2",
+                n.porcentaje_nota3 AS "P3",
+                n.porcentaje_nota4 AS "P4",
+                n.porcentaje_nota5 AS "P5",
             ROUND((
                 (n.nota1 * n.porcentaje_nota1 / 100) + 
                 (n.nota2 * n.porcentaje_nota2 / 100) + 

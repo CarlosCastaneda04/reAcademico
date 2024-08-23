@@ -11,12 +11,12 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Evaluación 1</th>
-                            <th>Evaluación 2</th>
-                            <th>Evaluación 3</th>
-                            <th>Evaluación 4</th>
-                            <th>Evaluación 5</th>
-                            <th>Nota Final</th>
+                            <th>Evaluación 1 <br>{{ $nota->{'P1'} }}(%)</th>
+                            <th>Evaluación 2 <br>{{ $nota->{'P2'} }}(%)</th>
+                            <th>Evaluación 3 <br>{{ $nota->{'P3'} }}(%)</th>
+                            <th>Evaluación 4 <br>{{ $nota->{'P4'} }}(%)</th>
+                            <th>Evaluación 5 <br>{{ $nota->{'P5'} }}(%)</th>
+                            <th>Nota Final <br>100(%)</th>
                             <th>Asistencia (%)</th>
                         </tr>
                     </thead>

@@ -130,7 +130,10 @@ body {
 .table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin-top: 20px;
+    background-color: #f3e6f5; /* Cambiar este color si lo deseas */
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 /* Estilos para las cabeceras de la tabla */

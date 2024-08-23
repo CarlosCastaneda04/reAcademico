@@ -171,6 +171,7 @@ body {
     color: white;
     border: none;
     padding: 10px 20px;
+    margin-top: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -287,4 +288,14 @@ body {
 
 .login-footer a:hover {
     text-decoration: underline;
+}
+
+/* Tabla editar */
+.table-sm td, .table-sm th {
+    padding: 0.3rem;
+}
+
+.form-control-sm {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.4rem;
 }

@@ -9,6 +9,11 @@ use App\Mail\UsuarioCreadoMailable;
 
 class RegistroController extends Controller
 {
+      public function index()
+    {
+        // Aquí va la lógica para manejar la solicitud a /registro
+        return view('registro.index');
+    }
     public function mostrarFormularioAlumno()
     {
         $facultades = DB::select('SELECT * FROM facultades');

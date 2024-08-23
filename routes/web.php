@@ -7,9 +7,9 @@ use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstadisticasController;
-
+use App\Http\Controllers\RegistroController;
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // Ruta de inicio para todos los usuarios
@@ -35,12 +35,14 @@ Route::middleware('auth')->group(function() {
     Route::get('/register', [SuperadminController::class, 'showRegisterForm'])->name('register');
     Route::post('/register', [SuperadminController::class, 'register']);
 
-
     //
     
 Route::middleware('auth')->group(function() {
     Route::get('/materias', [SuperadminController::class, 'showMateriasForm'])->name('materias');
     Route::post('/materias', [SuperadminController::class, 'asignarMaterias']);
+    // web.php
+Route::get('/registro', [RegistroController::class, 'index'])->name('registro.index');
+
     Route::post('/superadmin/materias/{id}/agregar-alumnos', [SuperAdminController::class, 'agregarAlumnos'])->name('superadmin.materias.agregarAlumnos');
     // Rutas para Superadmin sin protección por middleware
 Route::get('/superadmin/materias/alumnos', [SuperAdminController::class, 'getAlumnosPorCarrera'])->name('superadmin.materias.alumnos');

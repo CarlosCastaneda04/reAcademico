@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
 <div class="login-container">
     <h2 class="login-header">INICIO DE SESIÓN</h2>
@@ -27,4 +26,5 @@
     </form>
     <p class="login-footer">Universidad Patrimonial 2  <br>Tu universidad de confianza</p>
 </div>
+
 @endsection

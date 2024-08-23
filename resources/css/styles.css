@@ -178,22 +178,23 @@ body {
     color: #888;    
 }
 
-
 /* login principal */
 
 /* Contenedor principal del formulario */
 .login-container {
     max-width: 500px; /* Ajustado para un contenedor más estético */
-    margin: 40px auto; /* Espacio superior e inferior y centrado automático */
+    margin: 0 auto; /* Centrado horizontal */
     padding: 0;
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 20px; /* Añadido para bordes ligeramente redondeados */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Suavizado para una mejor profundidad */
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Encabezado del formulario */
-
 .login-header {
     text-align: center;
     color: white;
@@ -281,8 +282,6 @@ body {
     transform: translateY(0);
 }
 
-
-
 /* Estilo para el pie del formulario */
 .login-footer {
     text-align: center;
@@ -302,4 +301,3 @@ body {
 .login-footer a:hover {
     text-decoration: underline;
 }
-

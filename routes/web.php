@@ -84,6 +84,7 @@ Route::post('/registro/superadmin', [RegistroController::class, 'registrarSupera
 Route::get('/materias/docente', [DocenteController::class, 'verMaterias'])->name('docente.materias');
 Route::get('/materias/docente/{id}', [DocenteController::class, 'verAlumnos'])->name('docente.alumnos');
 Route::get('/materias/docente/{id}/notas/{alumno_id}', [DocenteController::class, 'verNotasAlumno'])->name('docente.ver.notas');
+Route::get('/materias/docente/{id}/notasalumno/{alumno_id}', [DocenteController::class, 'NotasAlumno'])->name('docente.notas.alumno');
 Route::post('/materias/docente/{id}/notas/{alumno_id}', [DocenteController::class, 'guardarNotas'])->name('docente.notas.guardar');
 
 // Alumno

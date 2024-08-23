@@ -1,13 +1,13 @@
 /* Estilo general para la Navbar */
 .navbar {
-    background-color: #600000; /* Color de fondo similar al de la imagen */
-    color: #ffffff; /* Texto en blanco */
+    background-color: #600000;
+    color: #ffffff;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    position: fixed; /* Fija la navbar en la parte superior */
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -15,8 +15,8 @@
 }
 
 body {
-    margin: 0; /* Elimina los márgenes del body para que la navbar esté completamente arriba */
-    padding-top: 60px; /* Espacio para evitar que el contenido se superponga a la navbar */
+    margin: 0;
+    padding-top: 60px;
 }
 
 .navbar ul {
@@ -45,8 +45,7 @@ body {
     font-size: 18px;
     font-weight: bold;
     text-align: center;
-    flex-grow: 1; /* Para centrar el rol del usuario */
-    text-align: center;
+    flex-grow: 1;
 }
 
 .navbar .user-profile {
@@ -54,16 +53,14 @@ body {
     align-items: center;
 }
 
-
-
 .navbar .user-profile a {
-    margin-left: 10px; /* Añade un margen izquierdo al enlace de Logout */
-    color: #ffffff; /* Asegura que el texto del enlace también sea blanco */
-    text-decoration: none; /* Remueve subrayado */
+    margin-left: 10px;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .navbar .user-profile a:hover {
-    text-decoration: underline; /* Agrega subrayado al hacer hover */
+    text-decoration: underline;
 }
 
 .btn-logout {
@@ -79,12 +76,6 @@ body {
     text-decoration: underline;
 }
 
-
-
-/* materias */
-
-
-/* home Alumno*/
 /* Contenedor centrado */
 .container {
     display: flex;
@@ -92,6 +83,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 80vh;
+    margin-top: 50px;
 }
 
 /* Grid para las materias */
@@ -100,14 +92,14 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    max-width: 600px;  /* Ajusta el ancho máximo para centrar */
+    max-width: 600px;
 }
 
 /* Estilos para los botones de las materias */
 .materia-btn {
     display: block;
     width: 100%;
-    max-width: 300px;  /* Ajusta el ancho máximo de los botones */
+    max-width: 300px;
     padding: 20px;
     background-color: #ffffff;
     border: 2px solid #ccc;
@@ -125,105 +117,111 @@ body {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-
-/* Estilos para la tabla de alumnos */
+/* Tabla de alumnos y ver notas */
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    background-color: #f3e6f5; /* Cambiar este color si lo deseas */
+    background-color: #f3e6f5;
     border-radius: 10px;
     overflow: hidden;
 }
 
-/* Estilos para las cabeceras de la tabla */
-.table thead th {
-    background-color: #600000; /* Color de fondo para las cabeceras */
-    color: #ffffff; /* Color del texto en las cabeceras */
-    padding: 12px;
-    text-align: left;
+.table th, .table td {
+    border: 1px solid #600000;
+    padding: 15px;
+    text-align: center;
 }
 
-/* Estilos para las celdas de la tabla */
-.table tbody td {
-    background-color: #ffffff; /* Color de fondo para las celdas */
-    padding: 12px;
-    border-bottom: 1px solid #ddd; /* Línea divisoria entre filas */
+.table th {
+    background-color: #600000;
+    color: white;
 }
 
-/* Alternar el color de fondo para filas */
+.table td {
+    background-color: #cc9b9b;
+    color: black;
+}
+
+/* Alternar color de fondo para filas */
 .table tbody tr:nth-child(even) td {
-    background-color: #f9f9f9; /* Color de fondo para filas pares */
+    background-color: #f9f9f9;
 }
 
-/* Estilo para el botón de acción dentro de la tabla */
+/* Botones dentro de la tabla */
 .table .btn-primary {
     padding: 8px 16px;
-    background-color: #600000; /* Color de fondo para el botón */
+    background-color: #600000;
     color: #ffffff;
     border: none;
     border-radius: 4px;
     font-size: 14px;
     text-align: center;
-    text-decoration: none;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .table .btn-primary:hover {
-    background-color: #450000; /* Color de fondo para el botón al pasar el cursor */
+    background-color: #450000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Estilo para el mensaje de vaciado */
-.table td[colspan="4"] {
+/* Botón flotante para regresar e imprimir */
+.imprimir-btn, .volver-btn {
+    background-color: #600000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
     text-align: center;
-    padding: 20px;
-    color: #888;    
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
 }
 
-/* login principal */
+.imprimir-btn:hover, .volver-btn:hover {
+    background-color: #a00000;
+}
 
-/* Contenedor principal del formulario */
+/* Login */
 .login-container {
-    max-width: 500px; /* Ajustado para un contenedor más estético */
-    margin: 0 auto; /* Centrado horizontal */
+    max-width: 500px;
+    margin: 0 auto;
     padding: 0;
     background-color: #ffffff;
     border: 1px solid #ddd;
-    border-radius: 20px; /* Añadido para bordes ligeramente redondeados */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Suavizado para una mejor profundidad */
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
 
-/* Encabezado del formulario */
 .login-header {
     text-align: center;
     color: white;
     background-color: #800000;
     padding: 20px;
-    font-size: 1.8em; /* Tamaño del texto incrementado */
+    font-size: 1.8em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-top-left-radius: 10px; /* Bordes redondeados en la parte superior */
+    border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-/* Contenido del formulario */
 .login-form {
     padding: 30px;
     display: flex;
-    flex-direction: column; /* Alineación en columna para los campos */
+    flex-direction: column;
 }
 
-/* Espaciado entre campos del formulario */
 .login-form div {
-    margin-bottom: 20px; /* Espacio reducido para una apariencia más compacta */
+    margin-bottom: 20px;
 }
 
-/* Estilo para las etiquetas del formulario */
 .login-form label {
     display: flex;
     align-items: center;
@@ -232,75 +230,61 @@ body {
     font-size: 1em;
 }
 
-/* Espaciado entre el texto y el campo de entrada */
-.login-form label span {
-    margin-right: 10px;
-}
-
-/* Estilo para los campos de entrada */
 .login-form input {
     width: 100%;
-    padding: 12px; /* Ajustado para un tamaño más elegante */
+    padding: 12px;
     border: 1px solid #ccc;
     font-size: 1em;
-    border-radius: 5px; /* Bordes ligeramente redondeados */
+    border-radius: 5px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: border-color 0.3s ease;
 }
 
-/* Estilo para los campos de entrada cuando están enfocados */
 .login-form input:focus {
     border-color: #800000;
     outline: none;
 }
 
-/* Contenedor del botón de envío */
 .login-button-container {
     text-align: center;
-    margin-top: 20px; /* Espacio superior reducido */
+    margin-top: 20px;
 }
 
-/* Estilo para el botón de envío */
 .login-button-container button {
     background-color: #800000;
     color: white;
-    padding: 12px 24px; /* Ajustado para un tamaño más proporcionado */
+    padding: 12px 24px;
     border: none;
-    border-radius: 5px; /* Bordes ligeramente redondeados */
+    border-radius: 5px;
     font-size: 1.1em;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-/* Estilo para el botón cuando se pasa el ratón sobre él */
 .login-button-container button:hover {
     background-color: #20e706;
     transform: translateY(-2px);
 }
 
-/* Estilo para el botón cuando se hace clic en él */
 .login-button-container button:active {
     background-color: #600000;
     transform: translateY(0);
 }
 
-/* Estilo para el pie del formulario */
 .login-footer {
     text-align: center;
-    margin-top: 20px; /* Espacio superior reducido */
+    margin-top: 20px;
     color: #777;
-    font-size: 0.9em; /* Tamaño de fuente reducido para una apariencia más ligera */
+    font-size: 0.9em;
 }
 
-/* Estilo para los enlaces en el pie del formulario */
 .login-footer a {
     color: #800000;
     text-decoration: none;
     font-weight: bold;
 }
 
-/* Estilo para los enlaces cuando se pasa el ratón sobre ellos */
 .login-footer a:hover {
     text-decoration: underline;
 }

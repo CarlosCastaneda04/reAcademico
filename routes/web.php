@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SuperadminController;
@@ -39,16 +38,18 @@ Route::middleware('auth')->group(function() {
     Route::get('/materias', [SuperadminController::class, 'showMateriasForm'])->name('materias');
     Route::post('/materias', [SuperadminController::class, 'asignarMaterias']);
 
-    // Alumno
-    Route::get('/materias/alumno', [AlumnoController::class, 'verMaterias'])->name('alumno.materias');
-    Route::get('/materias/alumno/{id}', [AlumnoController::class, 'verNotas'])->name('alumno.notas');
-    Route::get('/alumno/imprimir/{materia_id}/{periodo}', [AlumnoController::class, 'imprimirNotasPeriodo'])->name('alumno.imprimir');
-
+   
     // Docente
-    Route::get('/materias/docente', [DocenteController::class, 'verMaterias'])->name('docente.materias');
-    Route::get('/materias/docente/{id}', [DocenteController::class, 'verAlumnos'])->name('docente.alumnos');
-    Route::post('/materias/docente/{id}', [DocenteController::class, 'guardarNotas'])->name('docente.notas.guardar');
-    
+Route::get('/materias/docente', [DocenteController::class, 'verMaterias'])->name('docente.materias');
+Route::get('/materias/docente/{id}', [DocenteController::class, 'verAlumnos'])->name('docente.alumnos');
+Route::get('/materias/docente/{id}/notas/{alumno_id}', [DocenteController::class, 'verNotasAlumno'])->name('docente.ver.notas');
+Route::post('/materias/docente/{id}/notas/{alumno_id}', [DocenteController::class, 'guardarNotas'])->name('docente.notas.guardar');
+
+// Alumno
+Route::get('/materias/alumno', [AlumnoController::class, 'verMaterias'])->name('alumno.materias');
+Route::get('/materias/alumno/{id}', [AlumnoController::class, 'verNotas'])->name('alumno.notas');
+Route::get('/alumno/imprimir/{materia_id}/{periodo}', [AlumnoController::class, 'imprimirNotasPeriodo'])->name('alumno.imprimir');
+
 
     // Ruta para estadísticas
     Route::get('/estadisticas', [EstadisticasController::class, 'index'])->name('estadisticas');

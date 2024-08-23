@@ -8,9 +8,18 @@ use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\IpVerificationController;
+
+Route::get('/verify-ip/{user}/{ip}', [IpVerificationController::class, 'verify'])->name('ip.verify');
+
+Route::get('/verificacion-ip-espera', function () {
+    return view('auth.espera');
+})->name('ip.verification.wait');
+
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/verify-ip/{user}/{ip}', [IpVerificationController::class, 'verify'])->name('ip.verify');
 
 // Ruta de inicio para todos los usuarios
 Route::get('/home', function () {

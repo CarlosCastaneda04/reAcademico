@@ -91,6 +91,8 @@ Route::post('/materias/docente/{id}/notas/{alumno_id}', [DocenteController::clas
 Route::get('/materias/alumno', [AlumnoController::class, 'verMaterias'])->name('alumno.materias');
 Route::get('/materias/alumno/{id}', [AlumnoController::class, 'verNotas'])->name('alumno.notas');
 Route::get('/alumno/imprimir/{materia_id}/{periodo}', [AlumnoController::class, 'imprimirNotasPeriodo'])->name('alumno.imprimir');
+Route::get('/materias/alumno/{id}/historial', [AlumnoController::class, 'verHistorial'])->name('alumno.historial');
+
 
 // web.php
 

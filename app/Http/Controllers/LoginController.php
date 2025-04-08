@@ -26,15 +26,15 @@ class LoginController extends Controller
             $currentIp = $request->ip();
 
             // Verificar si la IP ya está permitida
-            $ipAllowed = DB::select('SELECT * FROM user_ips WHERE user_id = ? AND ip = ?', [$userId, $currentIp]);
+            //$ipAllowed = DB::select('SELECT * FROM user_ips WHERE user_id = ? AND ip = ?', [$userId, $currentIp]);
 
-            if (!$ipAllowed) {
+            //if (!$ipAllowed) {
                 // Enviar correo de verificación de IP
-                Mail::to($user[0]->email)->send(new IpVerificationMail($user[0], $currentIp));
+              //  Mail::to($user[0]->email)->send(new IpVerificationMail($user[0], $currentIp));
 
                 // Redirigir a la pantalla de espera de verificación
-                return redirect()->route('ip.verification.wait');
-            }
+                //return redirect()->route('ip.verification.wait');
+            //}
 
             // Si la IP está permitida, iniciar sesión
             Auth::loginUsingId($userId);

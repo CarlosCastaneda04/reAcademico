@@ -45,8 +45,8 @@
             <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-img-container">
-                        <img src="https://i.ibb.co/kS5zk2M/Whats-App-Image-2024-08-23-at-1-43-16-AM.jpg" class="card-img-top"
-                            alt="Alumno">
+                        <img src="{{ asset('img/stdnt icon.svg') }}" class="card-img-top" alt="Alumno">
+
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Registrar Alumno</h5>
@@ -60,8 +60,8 @@
             <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-img-container">
-                        <img src="https://i.ibb.co/W51cCsH/Whats-App-Image-2024-08-23-at-1-46-35-AM.jpg"
-                            class="card-img-top" alt="Docente">
+                        <img src="{{ asset('img/prfsr icon.svg') }}" class="card-img-top" alt="Docente">
+
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Registrar Docente</h5>
@@ -75,8 +75,8 @@
             <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-img-container">
-                        <img src="https://i.ibb.co/Jj3SYnx/Whats-App-Image-2024-08-23-at-1-51-36-AM.jpg"
-                            class="card-img-top" alt="Superadmin">
+                        <img src="{{ asset('img/admin icon.svg') }}" class="card-img-top" alt="Superadmin">
+
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Registrar Superadmin</h5>

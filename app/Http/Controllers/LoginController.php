@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\IpVerificationMail;
+// use App\Mail\IpVerificationMail; // Comentado si no lo estás usando por ahora
 
 class LoginController extends Controller
 {
@@ -23,6 +23,9 @@ class LoginController extends Controller
         // Comparación directa sin encriptación
         if ($user && $password === $user[0]->password) {
             $userId = $user[0]->id;
+
+            // --- BLOQUE DE VERIFICACIÓN DE IP COMENTADO ---
+            /*
             $currentIp = $request->ip();
 
             // Verificar si la IP ya está permitida
@@ -30,13 +33,14 @@ class LoginController extends Controller
 
             //if (!$ipAllowed) {
                 // Enviar correo de verificación de IP
-              //  Mail::to($user[0]->email)->send(new IpVerificationMail($user[0], $currentIp));
+                //Mail::to($user[0]->email)->send(new IpVerificationMail($user[0], $currentIp));
 
                 // Redirigir a la pantalla de espera de verificación
                 //return redirect()->route('ip.verification.wait');
             //}
+            */
 
-            // Si la IP está permitida, iniciar sesión
+            // Si la IP está permitida (o saltamos esa parte), iniciar sesión
             Auth::loginUsingId($userId);
             return redirect()->route('home');
         }

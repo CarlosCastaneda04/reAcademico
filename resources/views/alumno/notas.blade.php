@@ -36,9 +36,6 @@
                         <button class="imprimir-btn"
                             onclick="imprimirPeriodo({{ $nota->periodo }}, {{ $nota->materia_id }})">Imprimir
                             {{ $nota->periodo }} periodo</button>
-                        <button class="imprimir-btn"
-                            onclick="window.location.href='{{ route('alumno.historial', ['id' => $nota->materia_id]) }}'">Ver
-                            Historial de Notas</button>
                     </div>
                 @endforeach
             </div>

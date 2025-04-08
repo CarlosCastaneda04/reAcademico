@@ -22,7 +22,6 @@
                     <li><a href="{{ route('crear') }}">Crear Materia</a></li>
                 @elseif (Auth::user()->rol == 'Docente')
                     <li><a href="{{ route('docente.materias') }}">Mis Materias</a></li>
-                    <li><a href="{{ route('estadisticas') }}">Estadísticas</a></li>
                 @endif
             @endif
         </ul>

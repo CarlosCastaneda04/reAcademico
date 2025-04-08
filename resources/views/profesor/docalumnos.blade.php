@@ -24,11 +24,11 @@
                         </td>
                         <td>
                             <a href="{{ route('docente.ver.notas', ['id' => $id, 'alumno_id' => $alumno->id]) }}"
-                                class="btn btn-primary">Ver Notas</a>
-                                <a href="{{ route('docente.editar.notas', ['id' => $id, 'alumno_id' => $alumno->id]) }}"
-    class="btn btn-warning mt-1">Editar Notas</a>
+                                class="btn btn-primary">Editar</a>
 
-
+                            <!-- Cambiar la ruta a la nueva para "Ver Notas" -->
+                            <a href="{{ route('docente.notas.alumno', ['id' => $id, 'alumno_id' => $alumno->id]) }}"
+                                class="btn btn-secondary">Ver Notas</a>
                         </td>
                     </tr>
                 @endforeach

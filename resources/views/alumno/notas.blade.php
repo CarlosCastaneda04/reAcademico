@@ -50,9 +50,7 @@
                     <div style="text-align: right;">
                         <button class="imprimir-btn" onclick="imprimirPeriodo(1, {{ $periodo1->materia_id }})">Imprimir
                             Periodo 1</button>
-                        <button class="imprimir-btn"
-                            onclick="window.location.href='{{ route('alumno.historial', ['id' => $nota->materia_id]) }}'">Ver
-                            Historial de Notas</button>
+                        
                     </div>
                 @endif
 
@@ -85,9 +83,7 @@
                     <div style="text-align: right;">
                         <button class="imprimir-btn" onclick="imprimirPeriodo(2, {{ $periodo2->materia_id }})">Imprimir
                             Periodo 2</button>
-                        <button class="imprimir-btn"
-                            onclick="window.location.href='{{ route('alumno.historial', ['id' => $nota->materia_id]) }}'">Ver
-                            Historial de Notas</button>
+
                     </div>
                 @endif
 
@@ -120,7 +116,7 @@
                     <div style="text-align: right;">
                         <button class="imprimir-btn" onclick="imprimirPeriodo(3, {{ $periodo3->materia_id }})">Imprimir
                             Periodo 3</button>
-                       
+
                     </div>
                 @endif
             </div>

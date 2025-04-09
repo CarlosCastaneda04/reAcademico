@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="title">
-            <h1>Universidad Patrimonial 2</h1>
+            <h1>Universidad Patrimonial</h1>
         </div>
         <div class="materias-grid">
             @foreach ($materias as $materia)

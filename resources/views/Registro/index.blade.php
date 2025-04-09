@@ -45,7 +45,7 @@
             <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-img-container">
-                        <img src="https://i.ibb.co/kS5zk2M/Whats-App-Image-2024-08-23-at-1-43-16-AM.jpg" class="card-img-top"
+                        <img src="https://i.ibb.co/fdNpVjbF/13995090641543238940-128.png" class="card-img-top"
                             alt="Alumno">
                     </div>
                     <div class="card-body">
@@ -60,7 +60,7 @@
             <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-img-container">
-                        <img src="https://i.ibb.co/W51cCsH/Whats-App-Image-2024-08-23-at-1-46-35-AM.jpg"
+                        <img src="https://i.ibb.co/NgHYXBBr/2351189101543238940-128.png"
                             class="card-img-top" alt="Docente">
                     </div>
                     <div class="card-body">
@@ -75,7 +75,7 @@
             <div class="col-md-4">
                 <div class="card text-center">
                     <div class="card-img-container">
-                        <img src="https://i.ibb.co/Jj3SYnx/Whats-App-Image-2024-08-23-at-1-51-36-AM.jpg"
+                        <img src="https://i.ibb.co/chg7CRdg/4987345791543238941-128-1.png"
                             class="card-img-top" alt="Superadmin">
                     </div>
                     <div class="card-body">

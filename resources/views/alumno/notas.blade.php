@@ -120,9 +120,7 @@
                     <div style="text-align: right;">
                         <button class="imprimir-btn" onclick="imprimirPeriodo(3, {{ $periodo3->materia_id }})">Imprimir
                             Periodo 3</button>
-                        <button class="imprimir-btn"
-                            onclick="window.location.href='{{ route('alumno.historial', ['id' => $nota->materia_id]) }}'">Ver
-                            Historial de Notas</button>
+                       
                     </div>
                 @endif
             </div>
